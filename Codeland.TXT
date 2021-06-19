@@ -1,0 +1,38 @@
+#include <stdio.h> 
+#include <string.h>
+
+void CodelandUsernameValidation(char * str) {
+  int a=0, ind=0;
+  a=strlen(str);
+  // code goes here  
+  if(a>=4 && a<=25){
+    ind++;
+    if((str[0]>=65 && str[0]<=90) || (str[0]>=97 && str[0]<=122)){
+      ind++;
+      if(str[a-1]!='_'){
+        ind++;
+        for(int i=1; i<strlen(str); i++){
+          if ((str[i]>=65 && str[i]<=90) || (str[i]>=97 && str[i]<=122) || (str[i]>=48 && str[i]<=57)){
+            if(i==a-1){
+              ind++;
+            }
+          }
+        }
+      }
+    } 
+  }
+  if(ind==4){
+    printf("true");
+  }
+  else {
+    printf("false");
+  }
+}
+
+int main(void) { 
+   
+  // keep this function call here
+  CodelandUsernameValidation(coderbyteInternalStdinFunction(stdin));
+  return 0;
+    
+}

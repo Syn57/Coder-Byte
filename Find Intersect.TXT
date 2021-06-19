@@ -1,0 +1,87 @@
+#include <stdio.h> 
+#include <string.h>
+#include <ctype.h>
+char temp1[99][99], temp2[99][99], lastStr[99][99];
+void FindIntersection(char * strArr[], int arrLength) {
+  int h=0,i=0,j=0,ind=0, max1=1,max2=1, last=0;
+  char str1[99], str2[99];
+  strcpy(str1,strArr[0]);
+  strcpy(str2,strArr[1]);
+  // code goes here 
+  //Extracting the fisrt string 
+  for(h=0;h<strlen(str1);h++){
+    ind=h;
+    if(!isdigit(str1[h])) {
+      continue;
+    }
+    else {
+      for(i=0;i<strlen(str1);i++){
+         if(isdigit(str1[ind])){
+            temp1[j][i]=str1[ind];
+            ind++;
+          }
+         else {
+            j++; h=ind; break;
+         }
+      }
+    }
+  }
+  //Extracting the second string 
+  j=0;
+  for(h=0;h<strlen(str2);h++){
+    ind=h;
+    if(!isdigit(str2[h])) {
+      continue;
+    }
+    else {
+      for(i=0;i<strlen(str2);i++){
+         if(isdigit(str2[ind])){
+            temp2[j][i]=str2[ind];
+            ind++;
+          }
+         else {
+            j++; h=ind; break;
+         }
+      }
+    }
+  }
+  //Compare the strings
+  for(i=0;i<strlen(str1);i++){
+    if(str1[i]==','){
+      max1++;
+    }
+  }
+  for(i=0;i<strlen(str2);i++){
+    if(str2[i]==','){
+      max2++;
+    }
+  }
+  for(i=0;i<max1;i++){
+    for(j=0;j<max2;j++){
+      if(strcmp(temp1[i],temp2[j])==0){
+        strcpy(lastStr[last],temp1[i]);
+        last++;
+      }
+    }
+  }
+  if(last==0){
+    printf("false");
+  }
+  else {
+    for(i=0;i<last;i++){
+      printf("%s",lastStr[i]);
+      if(i<last-1){
+        printf(",");
+      }
+  }
+  }
+  
+}
+
+int main(void) { 
+  // keep this function call here
+  char * A[] = coderbyteInternalStdinFunction(stdin);
+  int arrLength = sizeof(A) / sizeof(*A);
+  FindIntersection(A, arrLength);
+  return 0;
+}

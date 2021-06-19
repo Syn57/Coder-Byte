@@ -1,0 +1,35 @@
+#include <stdio.h> 
+#include <string.h>
+
+void BracketMatcher(char * str) {
+  char string[99];
+  int ind=0;
+  strcpy(string,str);
+  // code goes here  
+  for(int i=0; i<strlen(string); i++){
+    if(ind>=0){
+      if(string[i]=='('){
+        ind++;
+      }
+      if(string[i]==')'){
+        ind--;
+      }
+    }
+    else {
+      ind=-1;
+      break;
+    }
+  }
+  if(ind==0){
+    printf("1");
+  }
+  else printf("0");
+}
+
+int main(void) { 
+   
+  // keep this function call here
+  BracketMatcher(coderbyteInternalStdinFunction(stdin));
+  return 0;
+    
+}
